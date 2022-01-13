@@ -1,0 +1,16 @@
+{
+  "name": "rest-api 6otosaka9",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "http": "^0.0.1-security",
+    "node-fetch": "^3.1.0",
+    "request": "^2.88.2"
+  }
+}
