@@ -1,10 +1,9 @@
 __path = process.cwd()
 const express = require('express');
+const cors = require('cors');
+const secure = require('ssl-express-www');
 const app = express();
 const path = require('path');
-//const cors = require('cors')
-//onstt secure = require('ssl-express-www');
-const project = '/sdcard/6otosaka9/web/'
 const routes = require('./src/routes/api');
 
 //Settings
@@ -20,6 +19,9 @@ app.set("rootP", path.join(__dirname))
 
 
 //rutas
+app.enable('trust proxy');
+app.use(cors());
+app.use(secure);
 app.use('/api', require('./src/routes/api'));
 app.use('/', require('./src/routes/routes'));
 //app.use('/', 'routes/routes');
