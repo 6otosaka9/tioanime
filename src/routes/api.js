@@ -81,7 +81,8 @@ router.get('/tioanime', (req, res, next) => {
   const host = 'https://tioanime.com'
   
   //request
-  request(url, async (err, req, body) => {
+  try {
+   request(url, async (err, req, body) => {
     if (!body.includes(`<li class="col-6 col-sm-4 col-md-3 col-xl-2">`)) {
       res.json({
         developer: "6otosaka9",
@@ -143,10 +144,15 @@ router.get('/tioanime', (req, res, next) => {
         var prevStatus = index.match(regStatus)
         var statusPrev = prevStatus[0].slice(48)
         var status = statusPrev.substring(0, statusPrev.length -1)
-        var regYear = /class="year"\>.+?\</g;
-        var dataYear = index.match(regYear)
-        var prevYear = dataYear[0].slice(13)
-        var year = prevYear.substring(0, prevYear.length -1)
+        try {
+         var regYear = /class="year"\>.+?\</g;
+         var dataYear = index.match(regYear)
+         var prevYear = dataYear[0].slice(13)
+         var year = prevYear.substring(0, prevYear.length -1)
+        } catch (e) {
+         var year = "--/--"
+        }
+        
         var regCaps = /episodes = \[.+?\,/g;
         var dataCap = index.match(regCaps)
         var prevCap = dataCap[0].slice(12)
@@ -172,6 +178,13 @@ router.get('/tioanime', (req, res, next) => {
     }
     
   });
+  } catch (error1) {
+   res.json( {
+    error: "error interno desconocido"
+   })
+   console.log(error1)
+  }
+  
   };
   animeSearch(name)
   //termina animeSearch()
