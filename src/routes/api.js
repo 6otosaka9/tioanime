@@ -37,44 +37,6 @@ router.get('/creator', (req, res, next) => {
   }
   //res.render('settings.html', {title: "Pagina de Ajustes"})
 });
-const express = require('express');
-const request = require('request');
-//onstt fetch = (...args) => import('node-fetch');
-const path = require('path');
-const router = express.Router();
-
-const apiKeys = "6otosaka9"
-/*
-router.get('/', (req, res) => {
-  res.sendFile(__path + '/views/api.html', { title: "Api-page"});
-});
-*/
-router.get('/creator', (req, res, next) => {
-  var apikeyInput = req.query.apikey;
-  if(apiKeys.includes(apikeyInput)) {
-    const jsonme = {
-      name: "otosaka",
-      number: "+51 993 966 345",
-      title: "my creator",
-      youtube: "6otosaka9"
-    };
-    res.json(jsonme);
-  }
-  if(!apikeyInput) {
-    var jsonN = {
-      error: "no hay apikey"
-    };
-    res.json(jsonN);
-  }
-  if (apikeyInput !== apiKeys) {
-    fail = { 
-      error: "apikey incorrecta" 
-      
-    };
-    res.json(fail);
-  }
-  //res.render('settings.html', {title: "Pagina de Ajustes"})
-});
 
 router.get('/meme', (req, res, next) => {
   var apikeyInput = req.query.apikey;
