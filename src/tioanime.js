@@ -104,7 +104,10 @@ const animeSearch = async (name, res) => {
           episodes: `${episodes}`,
           url: host + urlAnime("0")
         })
-        res.json(datos)
+        res.json({
+          dev: 6otosaka9
+          reault: datos
+        })
       }
       
     });
